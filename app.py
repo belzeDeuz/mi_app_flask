@@ -1,21 +1,30 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# Página principal con HTML
-@app.route("/", methods=["GET"])
-def home():
-    return render_template("index.html")
-
-# Página para recibir datos con un formulario
-@app.route("/datos", methods=["GET", "POST"])
+@app.route("/datos", methods=["POST"])
 def recibir_datos():
-    if request.method == "POST":
-        nombre = request.form.get("nombre", "Desconocido")
-        edad = request.form.get("edad", "No especificada")
-        return render_template("resultado.html", nombre=nombre, edad=edad)
+    # Depuración: Ver los datos recibidos en crudo
+    print("Contenido en bruto recibido:", request.data)
+    print("Headers recibidos:", request.headers)
+
+    # Intentar obtener JSON de la petición
+    try:
+        data = request.get_json(force=True)  # Forzamos JSON si no se detecta automáticamente
+    except Exception as e:
+        return f"Error al procesar JSON: {str(e)}", 400
+
+    if not data:
+        return "Error: No se enviaron datos JSON", 400
+
+    # Extraemos los datos esperados
+    nombre = data.get("nombre", "Desconocido")
+    edad = data.get("edad", "No especificada")
+
+    # Formateamos la respuesta
+    respuesta = f"Datos recibidos\nNombre: {nombre}\nEdad: {edad}"
     
-    return render_template("formulario.html")
+    return respuesta, 201, {"Content-Type": "text/plain; charset=utf-8"}
 
 if __name__ == "__main__":
     app.run(debug=True)
