@@ -17,7 +17,6 @@ def recibir_datos():
 
     # Puedes procesar los datos aquí
     respuesta = {
-        "mensaje": "Datos recibidos correctamente",
         "datos": data
     }
     return jsonify(respuesta), 201
