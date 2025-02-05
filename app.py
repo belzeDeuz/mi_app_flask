@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -7,29 +7,30 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-@app.route("/datos", methods=["POST"])
+# Página para mostrar y recibir datos
+@app.route("/datos", methods=["GET", "POST"])
 def recibir_datos():
-    # Depuración: Ver los datos recibidos en crudo
-    print("Contenido en bruto recibido:", request.data)
-    print("Headers recibidos:", request.headers)
+    if request.method == "POST":
+        # Depuración: Ver los datos recibidos en crudo
+        print("Contenido en bruto recibido:", request.data)
+        print("Headers recibidos:", request.headers)
 
-    # Intentar obtener JSON de la petición
-    try:
-        data = request.get_json(force=True)  # Forzamos JSON si no se detecta automáticamente
-    except Exception as e:
-        return f"Error al procesar JSON: {str(e)}", 400
+        # Intentar obtener JSON o datos de formulario
+        try:
+            data = request.get_json(force=True, silent=True)  # Si no se detecta JSON, no lanza error
+        except Exception as e:
+            return f"Error al procesar JSON: {str(e)}", 400
 
-    if not data:
-        return "Error: No se enviaron datos JSON", 400
+        if not data:
+            nombre = request.form.get("nombre", "Desconocido")
+            edad = request.form.get("edad", "No especificada")
+        else:
+            nombre = data.get("nombre", "Desconocido")
+            edad = data.get("edad", "No especificada")
 
-    # Extraemos los datos esperados
-    nombre = data.get("nombre", "Desconocido")
-    edad = data.get("edad", "No especificada")
+        return render_template("resultado.html", nombre=nombre, edad=edad)
 
-    # Formateamos la respuesta
-    respuesta = f"Datos recibidos\nNombre: {nombre}\nEdad: {edad}"
-    
-    return respuesta, 201, {"Content-Type": "text/plain; charset=utf-8"}
+    return render_template("formulario.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
