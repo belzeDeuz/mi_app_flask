@@ -11,10 +11,6 @@ def home():
 @app.route("/datos", methods=["GET", "POST"])
 def recibir_datos():
     if request.method == "POST":
-        # Depuración: Ver los datos recibidos en crudo
-        print("Contenido en bruto recibido:", request.data)
-        print("Headers recibidos:", request.headers)
-
         # Intentar obtener JSON o datos de formulario
         try:
             data = request.get_json(force=True, silent=True)  # Si no se detecta JSON, no lanza error
