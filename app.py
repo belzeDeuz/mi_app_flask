@@ -1,6 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
+
+# Página principal con HTML
+@app.route("/", methods=["GET"])
+def home():
+    return render_template("index.html")
 
 @app.route("/datos", methods=["POST"])
 def recibir_datos():
