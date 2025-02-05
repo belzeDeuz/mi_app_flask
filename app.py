@@ -1,30 +1,21 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
-# Endpoint GET
+# Página principal con HTML
 @app.route("/", methods=["GET"])
 def home():
-    return "¡Hola, mundo! Bienvenido a mi app en Heroku."
+    return render_template("index.html")
 
-# Endpoint POST
-@app.route("/datos", methods=["POST"])
+# Página para recibir datos con un formulario
+@app.route("/datos", methods=["GET", "POST"])
 def recibir_datos():
-    # Se espera recibir datos en formato JSON
-    data = request.get_json()
-    if not data:
-        return "Error: No se enviaron datos JSON", 400
-
-    # Extraemos los datos esperados
-    nombre = data.get("nombre", "Desconocido")
-    edad = data.get("edad", "No especificada")
+    if request.method == "POST":
+        nombre = request.form.get("nombre", "Desconocido")
+        edad = request.form.get("edad", "No especificada")
+        return render_template("resultado.html", nombre=nombre, edad=edad)
     
-    # Formateamos la respuesta de la forma solicitada
-    respuesta = f"Datos recibidos\nNombre: {nombre}\nEdad: {edad}"
-    
-    # Retornamos la respuesta como texto plano
-    return respuesta, 201, {"Content-Type": "text/plain; charset=utf-8"}
+    return render_template("formulario.html")
 
 if __name__ == "__main__":
-    # Para desarrollo local, se activa el modo debug
     app.run(debug=True)
