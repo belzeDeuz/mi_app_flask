@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H. Ayuntamiento Mexicacán</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+    <!-- Navbar con Logo -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="{{ url_for('static', filename='images/logo-MextyBlanco.png') }}" alt="Logo" class="logo">
+                H. Ayuntamiento Mexicacán
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Directorio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Reglamentos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Anuncios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Panteón Municipal</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carrusel -->
+    <div class="container text-center">
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ url_for('static', filename='images/default-image.jpg') }}" class="d-block w-100" alt="Imagen de carrusel">
+                </div>
+            </div>
+        </div>
+        <h3 class="mt-3">Administración 2024 - 2027</h3>
+        <p>"Cambiando la historia"</p>
+    </div>
+
+    <!-- Sección de eventos -->
+    <div class="container">
+        <h4 class="section-title">Eventos próximos</h4>
+        <div class="row text-center">
+            <div class="col-md-3">
+                <div class="card p-3">
+                    <img src="{{ url_for('static', filename='images/icon-evento.png') }}" class="card-img-top" alt="Evento">
+                    <div class="card-body">
+                        <h5 class="card-title">Evento</h5>
+                        <p class="card-text">Descripción del evento</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de noticias -->
+    <div class="container">
+        <h4 class="section-title">Últimas noticias</h4>
+        <div class="row text-center">
+            <div class="col-md-3">
+                <div class="card p-3">
+                    <img src="{{ url_for('static', filename='images/icon-noticia.png') }}" class="card-img-top" alt="Noticia">
+                    <div class="card-body">
+                        <h5 class="card-title">Noticia</h5>
+                        <p class="card-text">Descripción</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Quejas y Reportes -->
+    <div class="container text-center my-4">
+        <h4 class="section-title">Quejas y reportes</h4>
+        <button class="denuncia-btn">Denuncia ciudadana</button>
+    </div>
+
+    <!-- Pie de Página con Íconos -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center">
+                    <img src="{{ url_for('static', filename='images/logo-MextyColor.png') }}" alt="Logo" class="footer-logo">
+                </div>
+                <div class="col-md-4 text-center">
+                    <p><strong>H. Ayuntamiento Mexicacán</strong></p>
+                    <p>C. Morelos 1, Centro, 47370 Mexicacán, Jal.</p>
+                    <p><img src="{{ url_for('static', filename='images/icon-telefono.png') }}" alt="Teléfono" class="icon"> +52 344 702 0116</p>
+                    <p>Gobierno Municipal de Mexicacán</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p><strong>Horarios de atención</strong></p>
+                    <p><img src="{{ url_for('static', filename='images/icon-reloj.png') }}" alt="Horario" class="icon"> Lunes a Viernes</p>
+                    <p>9:00 AM - 3:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

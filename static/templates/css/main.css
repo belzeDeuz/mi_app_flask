@@ -1,0 +1,65 @@
+/* Estilos generales */
+body {
+    background-color: #f5f5f5;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #800020;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-brand img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Estilos de tarjetas */
+.card {
+    border: none;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.card img {
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+/* Botón de denuncia ciudadana */
+.denuncia-btn {
+    background-color: #800020;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.denuncia-btn:hover {
+    background-color: #a52a2a;
+}
+
+/* Footer */
+.footer {
+    background-color: #800020;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.footer-logo {
+    height: 50px;
+}
+
+.icon {
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
