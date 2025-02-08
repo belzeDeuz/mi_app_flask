@@ -1,6 +1,11 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, send_from_directory
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static")
+
+# Ruta para archivos estáticos si Heroku no los detecta
+@app.route('/static/<path:filename>')
+def static_files(filename):
+    return send_from_directory(app.static_folder, filename)
 
 # Página principal con HTML
 @app.route("/", methods=["GET"])
@@ -11,9 +16,8 @@ def home():
 @app.route("/datos", methods=["GET", "POST"])
 def recibir_datos():
     if request.method == "POST":
-        # Intentar obtener JSON o datos de formulario
         try:
-            data = request.get_json(force=True, silent=True)  # Si no se detecta JSON, no lanza error
+            data = request.get_json(force=True, silent=True)
         except Exception as e:
             return f"Error al procesar JSON: {str(e)}", 400
 
