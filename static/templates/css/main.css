@@ -1,63 +1,326 @@
-/* Estilos generales */
-body {
-    background-color: #f5f5f5;
+/* ============================
+   ESTILOS GENERALES
+   ============================ */
+   body {
+    background-color: #F2F2F2;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-/* Navbar */
-.navbar {
-    background-color: #800020;
+/* ============================
+   HEADER (Encabezado superior)
+   ============================ */
+   .header-top {
+    background-color: #F2F2F2; /* Fondo del encabezado */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribuye elementos */
+    padding: 15px 30px;
+    border-bottom: 2px solid #A67C52; /* Línea divisoria */
 }
 
-.navbar-brand {
+.header-top img {
+    height: 80px;
+    margin-right: 15px;
+}
+
+.header-title {
+    text-align: left;
+    flex-grow: 1; /* Permite que el título se mantenga centrado */
+}
+
+.header-title h1 {
+    font-size: 32px;
     font-weight: bold;
+    margin: 0;
 }
 
-.navbar-brand img {
-    height: 40px;
-    margin-right: 10px;
+.header-title p {
+    font-size: 24px;
+    color: #272727;
+    margin: 0;
 }
 
-/* Estilos de tarjetas */
+.header-login {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+    .header-login button {
+        background: none;
+        border: none; /* Elimina cualquier borde del botón */
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .header-login img {
+        height: 50px; /* Ajusta el tamaño si es necesario */
+        width: auto;
+        border: none; /* Asegura que la imagen no tenga borde */
+    }
+
+    .header-login:hover img {
+        filter: brightness(0.8) contrast(1.2); /* Reduce el brillo y aumenta el contraste de la imagen al pasar el cursor */
+        transform: scale(1.5); /* Aumenta ligeramente el tamaño de la imagen */
+        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out; /* Añade una transición suave */
+    }
+
+/* ============================
+   NAVBAR (Menú de navegación)
+   ============================ */
+   .navbar {
+    background-color: #8C1D40; /* Fondo del navbar */
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid#A67C52;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilos para los enlaces del navbar */
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 5px;
+    margin-top: 5px; /* Espaciado entre enlaces */
+}
+
+.navbar-nav .nav-link {
+    background-color: #343A40;
+    color: white !important;
+    border: 2px solid #A67C52; /* Borde dorado */
+    border-radius: 7px; /* Bordes redondeados */
+    padding: 5px 15px;
+    transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+    text-align: center;
+}
+
+/* Navbar activo */
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+    background-color: #006341;
+    color: white !important;
+    border-color: #A67C52; /* Cambia el borde a un dorado más brillante al pasar el cursor */
+}
+
+/* ============================
+   ESTILOS PARA EL DROPDOWN DEL NAVBAR
+   ============================ */
+   .navbar .dropdown-menu {
+    background-color: #8C1D40; /* Mismo color del navbar */
+    border: 2px solid #A67C52; /* Borde dorado */
+    border-radius: 7px; /* Bordes redondeados */
+}
+
+.navbar .dropdown-item {
+    color: white; /* Color del texto */
+    padding: 10px 15px;
+    transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+    border-radius: 5px; /* Bordes redondeados en cada opción */
+}
+
+.navbar .dropdown-item:hover {
+    background-color: #006341; /* Verde navbar activo */
+    color: white;
+    border-radius: 5px;
+}
+
+/* ============================
+   SECCIÓN DEL CARRUSEL
+   ============================ */
+.carousel {
+    margin-top: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carousel img {
+    height: 400px; 
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+/* ============================
+    ESTILOS PARA CONTROLES DEL CARRUSEL
+    ============================ */
+.carousel-control-prev,
+.carousel-control-next {
+     width: 50px;
+     height: 50px;
+     background-color: rgba(140, 29, 64, 0.8); /* Color de fondo semi-transparente (#8C1D40) */
+     border-radius: 50%; /* Hace los botones redondos */
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     position: absolute;
+     top: 50%;
+     transform: translateY(-50%);
+}
+
+.carousel-control-prev {
+     left: 10px;
+}
+
+.carousel-control-next {
+     right: 10px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+     background-color: rgba(160, 32, 80, 0.9); /* Un tono más claro al pasar el mouse */
+}
+
+/* Personalización de los íconos de las flechas */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+     filter: invert(100%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(200%) contrast(100%);
+     width: 20px;
+     height: 20px;
+}
+   
+
+/* ============================
+   SEPARACIÓN DEL TÍTULO PRINCIPAL
+   ============================ */
+   .admin-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+    position: relative;
+}
+
+.admin-title::before,
+.admin-title::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background-color: black; /* Color de las líneas */
+    margin: 0 15px;
+}
+
+
+/* ============================
+   CONTENEDOR DE TARJETAS (EVENTOS Y NOTICIAS) EN HORIZONTAL
+   ============================ */
+   .card-container {
+    display: flex;
+    justify-content: center; /* Centra las tarjetas */
+    gap: 20px; /* Espaciado entre tarjetas */
+    flex-wrap: nowrap; /* Evita que se vayan a una nueva línea */
+    overflow-x: auto; /* Permite desplazamiento horizontal si hay muchas tarjetas */
+    padding: 20px 0;
+}
+
+/* ============================
+   SECCIÓN DE TÍTULOS CON BOTÓN "VER MÁS"
+   ============================ */
+   .section-header {
+    display: flex;
+    justify-content: space-between; /* Distribuye el título y el botón */
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.btn-ver-mas {
+    background-color: #8C1D40;
+    color: white;
+    border: 2px solid #A67C52; /* Borde dorado */
+    border-radius: 7px; /* Bordes redondeados */
+    padding: 5px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+.btn-ver-mas:hover {
+    background-color: #A02050;
+    border-color: #A67C52; /* Borde dorado más brillante al pasar el cursor */
+}
+
+
+/* ============================
+   TARJETAS INDIVIDUALES
+   ============================ */
 .card {
-    border: none;
+    border: 2px solid #A67C52;
     text-align: center;
     background-color: white;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 15px;
+    transition: transform 0.3s ease-in-out;
+    flex: 0 0 250px; /* Tamaño uniforme de tarjetas */
+}
+
+.card:hover {
+    transform: scale(1.05);
 }
 
 .card img {
-    height: 80px;
-    margin-bottom: 10px;
+    max-width: 100%;
+    border-radius: 8px;
 }
 
-/* Botón de denuncia ciudadana */
+
+/* ============================
+   BOTÓN DE DENUNCIA CIUDADANA
+   ============================ */
 .denuncia-btn {
-    background-color: #800020;
+    background-color: #8C1D40;
     color: white;
-    border: none;
+    border: 2px solid #A67C52; 
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+    
 }
 
 .denuncia-btn:hover {
-    background-color: #a52a2a;
+    background-color: #A02050;
+    border-color: #A67C52; 
 }
 
-/* Footer */
+/* ============================
+   FOOTER (Pie de página)
+   ============================ */
 .footer {
-    background-color: #800020;
+    background-color: #5E0F26;
     color: white;
-    text-align: center;
+    text-align: left;
     padding: 20px;
     margin-top: 20px;
+    
 }
 
 .footer-logo {
-    height: 50px;
+    height: 150px;
 }
 
+.footer p {
+    margin: 5px 0;
+    text-align: left;
+}
+
+/* Estilos para íconos en el footer */
 .icon {
     height: 20px;
     vertical-align: middle;
